@@ -4,3 +4,7 @@
 [submodule "MFCTest/external/glfw"]
 	path = MFCTest/external/glfw
 	url = git@github.com:glfw/glfw.git
+[submodule "MFCTest/external/imgui"]
+	path = MFCTest/external/imgui
+	url = git@github.com:ocornut/imgui.git
+	branch = docking

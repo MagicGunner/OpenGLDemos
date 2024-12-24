@@ -11,6 +11,7 @@ add_executable(Demo1_6 main.cpp
 
 set(OpenCV_DIR $ENV{OPENCV_DIR})
 include_directories($ENV{EIGEN_DIR})
+#include_directories("D:\\CPPLibs\\eigen-3.4.0")
 
 find_package(OpenCV REQUIRED)
 target_link_libraries(Demo1_6 ${OpenCV_LIBS})

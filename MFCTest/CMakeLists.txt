@@ -26,14 +26,38 @@ list(APPEND INCLUDE_DIR ${GLFW_DIR}/include)
 list(APPEND INCLUDE_DIR ${GLFW_DIR}/deps)
 list(APPEND LINK_LIBS glfw)
 
+#ImGui
+set(IMGUI_DIR ./external/imgui)
+list(APPEND IMGUI_INCLUDE_DIR ${IMGUI_DIR} ${IMGUI_DIR}/backends)
+
+# vulkan
+find_package(Vulkan REQUIRED)
+list(APPEND LINK_LIBS "Vulkan::Vulkan")
+
 list(APPEND OPENGL_SOURCE
         ${GLAD_DIR}/src/glad.c
         src/OpenGLDemo.cpp
 )
 
+list(APPEND IMGUI_SOURCE
+        src/main.cpp
+        ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
+        ${IMGUI_DIR}/backends/imgui_impl_vulkan.cpp
+        ${IMGUI_DIR}/imgui.cpp
+        ${IMGUI_DIR}/imgui_draw.cpp
+        ${IMGUI_DIR}/imgui_demo.cpp
+        ${IMGUI_DIR}/imgui_tables.cpp
+        ${IMGUI_DIR}/imgui_widgets.cpp
+)
+
 add_executable(MFCTest ${OPENGL_SOURCE})
 target_include_directories(MFCTest PUBLIC ${INCLUDE_DIR})
 target_link_libraries(MFCTest PUBLIC ${LINK_LIBS})
+
+add_executable(IMGUI_DEMO ${IMGUI_SOURCE})
+target_include_directories(IMGUI_DEMO PUBLIC ${IMGUI_INCLUDE_DIR})
+target_link_libraries(IMGUI_DEMO PUBLIC ${LINK_LIBS})
+
 #target_sources(MFCTest PRIVATE
 #        src/main.cpp
 #)
