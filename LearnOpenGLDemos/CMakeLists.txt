@@ -52,7 +52,28 @@ list(APPEND OPENGL_SOURCE
         ${IMGUI_DIR}/imgui_widgets.cpp
 )
 
-list(APPEND OPENGL_SOURCE main.cpp)
+
+# 添加头文件
+list(APPEND INCLUDE_DIRS
+        # 通用库
+        src/Common
+        # 数学库
+        3rd/glm
+)
+
+file(GLOB WINDOW_SOURCE
+        src/Window/*.cpp
+        src/Window/*.h)
+
+file(GLOB COMMON_SOURCE
+        src/Common/*.cpp
+        src/Common/*.h)
+
+list(APPEND OPENGL_SOURCE
+        main.cpp
+        ${WINDOW_SOURCE}
+        ${COMMON_SOURCE}
+)
 
 add_executable(${ProjectName} ${OPENGL_SOURCE})
 
@@ -61,3 +82,6 @@ target_link_libraries(${ProjectName} PUBLIC ${LINK_LIBS})
 
 message(STATUS "INCLUDE_DIRS: ${INCLUDE_DIRS}")
 message(STATUS "LINK_LIBS: ${LINK_LIBS}")
+message(STATUS "ProjectName: ${ProjectName}")
+
+
