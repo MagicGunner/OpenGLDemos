@@ -8,3 +8,10 @@
 	path = MFCTest/external/imgui
 	url = git@github.com:ocornut/imgui.git
 	branch = docking
+[submodule "LearnOpenGLDemos/3rd/glfw"]
+	path = LearnOpenGLDemos/3rd/glfw
+	url = git@github.com:glfw/glfw.git
+[submodule "LearnOpenGLDemos/3rd/imgui"]
+	path = LearnOpenGLDemos/3rd/imgui
+	url = git@github.com:ocornut/imgui.git
+	branch = docking
